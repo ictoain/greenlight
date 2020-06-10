@@ -20,6 +20,17 @@ module OmniauthOptions
   module_function
 
   def omniauth_options(env)
+    env_hd = {
+      'google' => 'GOOGLE_OAUTH2_HD',
+      'office365' => 'OFFICE365_HD',
+      'apple' => 'APPLE_HD',
+      'facebook' => 'FACEBOOK_HD',
+      'github' => 'GITHUB_HD',
+      'instagram' => 'INSTAGRAM_HD',
+      'linkedin' => 'LINKEDIN_HD',
+      'openid_connect' => 'OPENID_CONNECT_HD',
+    }[env['omniauth.strategy'].options[:name]]
+
     if env['omniauth.strategy'].options[:name] == "bn_launcher"
       protocol = Rails.env.production? ? "https" : env["rack.url_scheme"]
 
@@ -33,10 +44,8 @@ module OmniauthOptions
       # This is only used in the old launcher and should eventually be removed
       env['omniauth.strategy'].options[:checksum] = generate_checksum(user_domain, customer_redirect_url,
         Rails.configuration.launcher_secret)
-    elsif env['omniauth.strategy'].options[:name] == "google"
-      set_hd(env, ENV['GOOGLE_OAUTH2_HD'])
-    elsif env['omniauth.strategy'].options[:name] == "office365"
-      set_hd(env, ENV['OFFICE365_HD'])
+    elsif !env_hd.nil?
+      set_hd(env, ENV[env_hd])
     end
   end
 

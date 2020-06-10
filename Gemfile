@@ -51,6 +51,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-bn-launcher', '~> 0.1.3'
+gem 'omniauth_openid_connect'
 gem 'net-ldap'
 gem 'bn-ldap-authentication', '~> 0.1.3'
 gem 'omniauth-bn-office365', '~> 0.1.1'
@@ -77,6 +78,7 @@ gem 'redcarpet'
 gem 'cancancan', '~> 2.0'
 
 group :production do
+  gem 'sqlite3', '~> 1.3.6'
   # Use a postgres database in production.
   gem 'pg', '~> 0.18'
   gem 'sequel'
