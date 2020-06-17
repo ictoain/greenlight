@@ -51,8 +51,6 @@ gem 'omniauth_openid_connect'
 gem 'omniauth-bn-launcher', git: 'https://github.com/blindsidenetworks/omniauth-bn-launcher.git', tag: '0.1.3'
 gem 'bn-ldap-authentication', git: 'https://github.com/blindsidenetworks/bn-ldap-authentication.git', tag: '0.1.2'
 gem 'net-ldap'
-gem 'bn-ldap-authentication', '~> 0.1.4'
-gem 'omniauth-bn-office365', '~> 0.1.1'
 
 # BigBlueButton API wrapper.
 gem 'bigbluebutton-api-ruby'
