@@ -27,7 +27,7 @@ display_usage() {
   echo "This script should be used as part of a CI strategy."
   echo -e "Usage:\n  image_build_custom.sh [ARGUMENTS]"
   echo -e "\nMandatory arguments \n"
-  echo -e "  repo_slug     The git repository  (e.g. bigbluebutton/greenlight)"
+  echo -e "  repo_slug     The git repository  (e.g. ictoain/greenlight)"
   echo -e "\nOptional arguments \n"
   echo -e "  branch | tag  The branch (e.g. master | release-2.0.5)"
 }
@@ -47,7 +47,8 @@ fi
 export CD_REF_SLUG=$1
 export CD_REF_NAME=$2
 if [ -z $CD_REF_NAME ]; then
-  export CD_REF_NAME=$(git branch | grep \* | cut -d ' ' -f2)
+#  export CD_REF_NAME=$(git branch | grep \* | cut -d ' ' -f2)
+   export CD_REF_NAME=release-v2-fkjuelich.de
 fi
 
 if [ "$CD_REF_NAME" != "custom-changes" ] && [[ "$CD_REF_NAME" != *"release"* ]] && [[ "$CD_REF_NAME" != *"alpha"* ]] && ( [ -z "$CD_BUILD_ALL" ] || [ "$CD_BUILD_ALL" != "true" ] ); then
